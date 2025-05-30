@@ -2,6 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {SignupDto} from 'src/user/dto/signup.dto';
 import {User} from 'src/user/entities/user.entity';
 import {UserService} from 'src/user/user.service';
+import {stripPasswordOnly} from 'src/utils/strip-password';
 
 @Injectable()
 export class AuthService {
@@ -9,10 +10,6 @@ export class AuthService {
 
   async signup(signupDto: SignupDto): Promise<Omit<User, 'password'>> {
     const user = await this.userService.createUser(signupDto);
-    const {password, ...userWithoutPassword} = user;
-    return Object.assign(
-      Object.create(Object.getPrototypeOf(user)),
-      userWithoutPassword,
-    );
+    return stripPasswordOnly(user);
   }
 }
