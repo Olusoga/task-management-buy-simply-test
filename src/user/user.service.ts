@@ -1,9 +1,9 @@
-import { Injectable, ConflictException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import {Injectable, ConflictException} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
 import * as bcrypt from 'bcryptjs';
-import { SignupDto } from './dto/signup.dto';
-import { User } from './entities/user.entity';
+import {SignupDto} from './dto/signup.dto';
+import {User} from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -13,9 +13,9 @@ export class UserService {
   ) {}
 
   async createUser(signupDto: SignupDto): Promise<User> {
-    const { email, password, ...rest } = signupDto;
+    const {email, password, ...rest} = signupDto;
 
-    const existingUser = await this.userRepository.findOne({ where: { email } });
+    const existingUser = await this.userRepository.findOne({where: {email}});
     if (existingUser) {
       throw new ConflictException('Email already exists');
     }
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { email } });
+    return this.userRepository.findOne({where: {email}});
   }
 
   async findAll(): Promise<User[]> {
@@ -40,6 +40,6 @@ export class UserService {
   }
 
   async findOneById(id: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { id } });
+    return this.userRepository.findOne({where: {id}});
   }
 }

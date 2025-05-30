@@ -1,34 +1,36 @@
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
 import helmet from 'helmet';
-import { HttpExceptionFilter } from './common/filter/httpexception';
-import { BadRequestException, ValidationPipe } from '@nestjs/common';
+import {HttpExceptionFilter} from './common/filter/httpexception';
+import {BadRequestException, ValidationPipe} from '@nestjs/common';
+import {ResponseInterceptor} from './common/interceptors/response.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-   app.useGlobalPipes(
-  new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    exceptionFactory: (errors) => {
-      const messages = errors.map((error) => {
-        const constraints = error.constraints;
-        const constraintMessages = constraints
-          ? Object.values(constraints).join(', ')
-          : 'Validation error';
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      exceptionFactory: (errors) => {
+        const messages = errors.map((error) => {
+          const constraints = error.constraints;
+          const constraintMessages = constraints
+            ? Object.values(constraints).join(', ')
+            : 'Validation error';
 
-        return `${error.property} - ${constraintMessages}`;
-      });
-      return new BadRequestException(messages.join('; '));
-    },
-  }),
-);
+          return `${error.property} - ${constraintMessages}`;
+        });
+        return new BadRequestException(messages.join('; '));
+      },
+    }),
+  );
 
   app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalInterceptors(new ResponseInterceptor());
 
-    app.use(helmet());
+  app.use(helmet());
 
   app.enableCors({
     origin: '*',
@@ -44,7 +46,6 @@ async function bootstrap() {
     methods: 'GET,PUT,POST,PATCH,DELETE,UPDATE,OPTIONS',
     credentials: true,
   });
-
 
   const options = new DocumentBuilder()
     .setTitle('TaskManagement APIS')

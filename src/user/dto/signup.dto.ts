@@ -1,27 +1,34 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
-import { UserRole } from '../entities/user.entity';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsString,
+  Matches,
+  MinLength,
+} from 'class-validator';
+import {ApiProperty} from '@nestjs/swagger';
+import {UserRole} from '../entities/user.entity';
 
 export class SignupDto {
   @ApiProperty({
     example: 'johndoe@example.com',
     description: 'User email address',
   })
-  @IsEmail({}, { message: 'Invalid email address' })
+  @IsEmail({}, {message: 'Invalid email address'})
   email: string;
 
   @ApiProperty({
     example: 'John',
     description: 'First name of the user',
   })
-  @IsNotEmpty({ message: 'First name is required' })
+  @IsNotEmpty({message: 'First name is required'})
   firstName: string;
 
   @ApiProperty({
     example: 'Doe',
     description: 'Last name of the user',
   })
-  @IsNotEmpty({ message: 'Last name is required' })
+  @IsNotEmpty({message: 'Last name is required'})
   lastName: string;
 
   @ApiProperty({
@@ -29,7 +36,9 @@ export class SignupDto {
     enum: UserRole,
     description: 'Role assigned to the user',
   })
-  @IsEnum(UserRole, { message: `Role must be one of: ${Object.values(UserRole).join(', ')}` })
+  @IsEnum(UserRole, {
+    message: `Role must be one of: ${Object.values(UserRole).join(', ')}`,
+  })
   role: UserRole;
 
   @ApiProperty({

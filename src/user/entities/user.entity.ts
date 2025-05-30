@@ -48,7 +48,7 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-   @BeforeInsert()
+  @BeforeInsert()
   public static assignUuid(user: User) {
     user.id = uuidv4();
   }
