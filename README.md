@@ -120,7 +120,7 @@ Common       | Shared logic, guards, decorators, filters
 
 # 🔄 CI/CD Pipeline
 echo '🔄 GitHub Actions configured'
-echo '🔄 Runs on push to main or on pull requests'
+echo '🔄 Runs on push to master or on pull requests'
 echo '🔄 Steps:'
 echo '   • Install dependencies'
 echo '   • Run lint'
