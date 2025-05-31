@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import {HttpExceptionFilter} from './common/filter/httpexception';
 import {BadRequestException, ValidationPipe} from '@nestjs/common';
 import {ResponseInterceptor} from './common/interceptors/response.interceptor';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

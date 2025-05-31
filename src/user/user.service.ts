@@ -1,9 +1,9 @@
 import {Injectable, ConflictException} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
-import * as bcrypt from 'bcryptjs';
 import {SignupDto} from './dto/signup.dto';
 import {User} from './entities/user.entity';
+import {stripPasswordOnly} from 'src/utils/strip-password';
 
 @Injectable()
 export class UserService {
@@ -12,7 +12,7 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  async createUser(signupDto: SignupDto): Promise<User> {
+  async createUser(signupDto: SignupDto) {
     const {email, password, ...rest} = signupDto;
 
     const existingUser = await this.userRepository.findOne({where: {email}});
@@ -20,26 +20,37 @@ export class UserService {
       throw new ConflictException('Email already exists');
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const user = this.userRepository.create({
       email,
-      password: hashedPassword,
+      password,
       ...rest,
     });
 
-    return this.userRepository.save(user);
+    const userData = await this.userRepository.save(user);
+    return stripPasswordOnly(userData);
   }
 
   async findByEmail(email: string): Promise<User | null> {
     return this.userRepository.findOne({where: {email}});
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userRepository.find();
+  async findAll(): Promise<Omit<User, 'password'>[]> {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.id',
+        'user.email',
+        'user.firstName',
+        'user.lastName',
+        'user.role',
+        'user.isActive',
+        'user.createdAt',
+        'user.updatedAt',
+      ])
+      .getMany();
   }
 
-  async findOneById(id: string): Promise<User | null> {
+  async findOne(id: string): Promise<User | null> {
     return this.userRepository.findOne({where: {id}});
   }
 }
