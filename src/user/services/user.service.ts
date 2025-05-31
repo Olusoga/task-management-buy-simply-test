@@ -7,8 +7,8 @@ import {
 } from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
-import {SignupDto} from './dto/signup.dto';
-import {User} from './entities/user.entity';
+import {SignupDto} from '../dto/signup.dto';
+import {User} from '../entities/user.entity';
 import {stripPasswordOnly} from 'src/utils/strip-password';
 import {LoggingService} from 'src/logging/logging.service';
 

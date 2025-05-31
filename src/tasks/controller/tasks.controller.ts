@@ -10,15 +10,15 @@ import {
   UseGuards,
   Req,
 } from '@nestjs/common';
-import {CreateTaskDto} from './dto/create-task.dto';
-import {UpdateTaskDto} from './dto/update-task.dto';
-import {FilterTasksDto} from './dto/filter-task.dto';
-import {GetTasksQuery} from './queries/impl/get-task.query';
+import {CreateTaskDto} from '../dto/create-task.dto';
+import {UpdateTaskDto} from '../dto/update-task.dto';
+import {FilterTasksDto} from '../dto/filter-task.dto';
+import {GetTasksQuery} from '../queries/impl/get-task.query';
 import {CommandBus, QueryBus} from '@nestjs/cqrs';
-import {GetTaskByIdQuery} from './queries/impl/get-task-by-id.query';
-import {UpdateTaskCommand} from './commands/impl/updates-task.command';
-import {DeleteTaskCommand} from './commands/impl/delete-task.command';
-import {CreateTaskCommand} from './commands/impl/create-task.command';
+import {GetTaskByIdQuery} from '../queries/impl/get-task-by-id.query';
+import {UpdateTaskCommand} from '../commands/impl/updates-task.command';
+import {DeleteTaskCommand} from '../commands/impl/delete-task.command';
+import {CreateTaskCommand} from '../commands/impl/create-task.command';
 import {
   ApiBearerAuth,
   ApiTags,

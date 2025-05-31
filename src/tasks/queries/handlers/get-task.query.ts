@@ -1,6 +1,6 @@
 import {IQueryHandler, QueryHandler} from '@nestjs/cqrs';
 import {FilterTasksDto} from 'src/tasks/dto/filter-task.dto';
-import {TasksService} from 'src/tasks/tasks.service';
+import {TasksService} from 'src/tasks/service/tasks.service';
 import {GetTasksQuery} from '../impl/get-task.query';
 
 @QueryHandler(GetTasksQuery)
