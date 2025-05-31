@@ -4,29 +4,28 @@ import {
   ExecutionContext,
   CallHandler,
 } from '@nestjs/common';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
-interface StandardResponse<T> {
-  status: 'success';
+interface ResponseWrapper<T> {
+  status: string;
   message: string;
   data: T;
 }
 
 @Injectable()
-export class ResponseInterceptor<T>
-  implements NestInterceptor<T, StandardResponse<T>>
+export class TransformInterceptor<T>
+  implements NestInterceptor<T, ResponseWrapper<T>>
 {
   intercept(
     context: ExecutionContext,
-    next: CallHandler<T>,
-  ): Observable<StandardResponse<T>> {
+    next: CallHandler,
+  ): Observable<ResponseWrapper<T>> {
+    const request = context.switchToHttp().getRequest();
+
     return next.handle().pipe(
       map((data: T) => ({
         status: 'success',
-        message:
-          context.switchToHttp().getRequest().customMessage ||
-          'Request successful',
+        message: request.message || 'Request successful',
         data,
       })),
     );

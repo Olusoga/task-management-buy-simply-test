@@ -4,7 +4,7 @@ import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
 import helmet from 'helmet';
 import {HttpExceptionFilter} from './common/filter/httpexception';
 import {BadRequestException, ValidationPipe} from '@nestjs/common';
-import {ResponseInterceptor} from './common/interceptors/response.interceptor';
+import {TransformInterceptor} from './common/interceptors/response.interceptor';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -30,7 +30,7 @@ async function bootstrap() {
   );
 
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.useGlobalInterceptors(new ResponseInterceptor());
+  app.useGlobalInterceptors(new TransformInterceptor());
 
   app.use(helmet());
 

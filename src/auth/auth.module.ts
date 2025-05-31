@@ -7,10 +7,12 @@ import {JwtModule, JwtService} from '@nestjs/jwt';
 import * as dotenv from 'dotenv';
 import {JwtAuthGuard} from 'src/auth/guards/jwt-auth-guard';
 import {JwtStrategy} from './strategies/jwt-strategy';
+import {LoggingModule} from 'src/logging/logging.module';
 dotenv.config();
 
 @Module({
   imports: [
+    LoggingModule,
     UserModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
