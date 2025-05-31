@@ -1,99 +1,150 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+echo "
+# ✅ Task Management System API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A simple and robust RESTful Task Management System built with NestJS, TypeORM, and PostgreSQL. This project follows best practices in modular architecture, testing, and security, and is fully implemented using VSCode, without Docker or caching.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🚀 Features Implemented
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- ✅ Modular Architecture: AuthModule, UserModule, TaskModule
+- ✅ RESTful Endpoints for Users, Tasks, and Auth
+- ✅ JWT Authentication & Role-based Authorization (ADMIN, USER)
+- ✅ Guards and Custom Decorator: @Roles()
+- ✅ DTOs & Input Validation with class-validator
+- ✅ Secure Password Hashing with bcrypt
+- ✅ Swagger API Documentation
+- ✅ Database Migrations using TypeORM CLI
+- ✅ Unit and Integration Tests with Jest
+- ✅ CI/CD with GitHub Actions
+- ✅ Code Linting with ESLint
+- ✅ Environment-based Configuration
+- ✅ PostgreSQL with proper entity relationships
+- ✅ CQRS Pattern (No Command/Query separation implemented)
+- ✅ Event-driven architecture (No event emitters or listeners)
+- ✅ Helmet for Security Headers (Basic security hardening not added)
+- ✅ GitHub Actions CI/CD Setup
+- ✅ ESLint Configured
+- ✅ Pagination, Filtering (Tasks by status/priority)
+- ✅ Proper Error Handling and Response Structure
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## 🛠 Project Setup
 
-## Compile and run the project
+# 1. Clone Repository
+git clone https://github.com/Olusoga/task-management
+cd BUY-SIMPLY-TEST
 
-```bash
-# development
-$ npm run start
+# 2. Install Dependencies
+npm install
 
-# watch mode
-$ npm run start:dev
+# 3. Configure Environment Variables
+cp .env.example .env
 
-# production mode
-$ npm run start:prod
-```
+# 4. Run Database Migrations
+npm run typeorm migration:run
 
-## Run tests
+# 5. Start the Development Server
+npm run start:dev
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+# 📦 Available Scripts
 
-# test coverage
-$ npm run test:cov
-```
+# ▶ Run Tests
+npm run test
 
-## Deployment
+# ▶ Run Test Coverage
+npm run test:cov
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+# ▶ Run ESLint
+npm run lint
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+# ▶ Format Code with Prettier
+npm run format
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+---
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+# 🧪 Testing
+echo '🧪 Unit and integration tests written using Jest'
+echo '🧪 Mocks used to isolate services and modules'
+echo '🧪 End-to-end flow tested for core modules'
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
+# 🔐 Authentication & Authorization
+echo '🔐 JWT-based authentication'
+echo '🔐 Role-based access control (ADMIN, USER)'
+echo '🔐 Guards and decorators used to enforce route-level permissions'
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+# 📚 API Documentation
+echo '📚 Swagger available at:'
+echo '🔗 http://localhost:3000/api'
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+# 📁 Project Structure
+echo '📁 Project Structure:'
+echo '
+src/
+├── auth/
+├── user/
+├── task/
+├── common/
+├── config/
+└── main.ts
+'
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+# 🧱 Architecture Overview
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# 📐 Clean Modular Monolith Design using NestJS
+The system is organized using feature-based modules and follows SOLID principles. Business logic is encapsulated in services, with guards, decorators, and DTOs enforcing clean structure and validation.
+
+🧠 Layers:
+Layer        | Responsibility
+------------ | --------------------------------------
+Controller   | Route and request handling
+Service      | Business logic
+Repository   | Data access via TypeORM
+DTO          | Validated data transfer objects using class-validator
+Entity       | Database schema representation
+Guard        | Authorization & access control
+Decorator    | Reusable route-level permissions with @Roles()
+Common       | Shared logic, guards, decorators, filters
+
+
+# 🔄 CI/CD Pipeline
+echo '🔄 GitHub Actions configured'
+echo '🔄 Runs on push to main or on pull requests'
+echo '🔄 Steps:'
+echo '   • Install dependencies'
+echo '   • Run lint'
+echo '   • Run tests'
+
+---
+
+# 🛑 What Was Not Covered (To Improve)
+echo '🛑 Improvements:'
+echo '❌ Redis Caching for performance boost'
+echo '❌ Docker/Docker Compose setup for containerization'
+echo '❌ Rate Limiting (to prevent abuse)'
+echo '❌ Soft Deletes using @DeleteDateColumn'
+echo '❌ WebSockets or Notifications for real-time features'
+
+---
+
+# ✅ Summary
+echo '✅ All core REST endpoints are working'
+echo '✅ Codebase is modular and tested'
+echo '❌ Caching, Docker, and advanced patterns are yet to be implemented'
+
+---
+
+# 📄 License
+echo '📄 License: MIT'
+"
