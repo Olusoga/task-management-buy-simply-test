@@ -1,5 +1,5 @@
 import {CommandHandler, ICommandHandler, EventBus} from '@nestjs/cqrs';
-import {TasksService} from '../../tasks.service';
+import {TasksService} from '../../service/tasks.service';
 import {TaskUpdatedEvent} from 'src/tasks/events/task-updated.event';
 import {UpdateTaskCommand} from '../impl/updates-task.command';
 

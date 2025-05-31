@@ -4,13 +4,13 @@ import {
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common';
-import {CreateTaskDto} from './dto/create-task.dto';
-import {UpdateTaskDto} from './dto/update-task.dto';
-import {FilterTasksDto} from './dto/filter-task.dto';
-import {Task} from './entities/task.entity';
+import {CreateTaskDto} from '../dto/create-task.dto';
+import {UpdateTaskDto} from '../dto/update-task.dto';
+import {FilterTasksDto} from '../dto/filter-task.dto';
+import {Task} from '../entities/task.entity';
 import {InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
-import {UserService} from 'src/user/user.service';
+import {UserService} from 'src/user/services/user.service';
 import {LoggingService} from 'src/logging/logging.service';
 import {User} from 'src/user/entities/user.entity';
 

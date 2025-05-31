@@ -1,6 +1,6 @@
 import {CommandHandler, EventBus, ICommandHandler} from '@nestjs/cqrs';
 import {DeleteTaskCommand} from '../impl/delete-task.command';
-import {TasksService} from '../../tasks.service';
+import {TasksService} from '../../service/tasks.service';
 import {TaskDeletedEvent} from 'src/tasks/events/task-deleted.event';
 
 @CommandHandler(DeleteTaskCommand)

@@ -11,7 +11,7 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import {UserService} from './user.service';
+import {UserService} from '../services/user.service';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -19,12 +19,12 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import {Roles} from 'src/common/decorators/roles.decorator';
-import {UserRole} from './entities/user.entity';
-import {SignupDto} from './dto/signup.dto';
+import {UserRole} from '../entities/user.entity';
+import {SignupDto} from '../dto/signup.dto';
 import {JwtAuthGuard} from 'src/auth/guards/jwt-auth-guard';
 import {RolesGuard} from 'src/common/guards/roles-guard';
 import {AuthGuard} from '@nestjs/passport';
-import {UpdateUserDto} from './dto/update-user.dto';
+import {UpdateUserDto} from '../dto/update-user.dto';
 
 @ApiTags('Users')
 @Controller('users')

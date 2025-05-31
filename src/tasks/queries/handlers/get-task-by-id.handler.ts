@@ -1,5 +1,5 @@
 import {QueryHandler, IQueryHandler} from '@nestjs/cqrs';
-import {TasksService} from 'src/tasks/tasks.service';
+import {TasksService} from 'src/tasks/service/tasks.service';
 import {GetTaskByIdQuery} from '../impl/get-task-by-id.query';
 
 @QueryHandler(GetTaskByIdQuery)
