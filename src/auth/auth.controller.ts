@@ -1,4 +1,4 @@
-import {Controller, Post, Body} from '@nestjs/common';
+import {Controller, Post, Body, Req} from '@nestjs/common';
 import {AuthService} from './auth.service';
 import {ApiTags, ApiOperation, ApiBody} from '@nestjs/swagger';
 
@@ -19,13 +19,19 @@ export class AuthController {
       required: ['email', 'password'],
     },
   })
-  login(@Body('email') email: string, @Body('password') password: string) {
+  async login(
+    @Body('email') email: string,
+    @Body('password') password: string,
+    @Req() req,
+  ) {
+    req.message = 'Login successful';
     return this.authService.login(email, password);
   }
 
   @Post('logout')
   @ApiOperation({summary: 'Logout user (stateless)'})
-  logout() {
+  logout(@Req() req) {
+    req.message = 'Logout successful';
     return this.authService.logout();
   }
 }
