@@ -53,7 +53,7 @@ npm run start:dev
 # 📦 Available Scripts
 
 # ▶ Run Tests
-npm run test
+npm run ci:test
 
 # ▶ Run Test Coverage
 npm run test:cov
@@ -82,7 +82,7 @@ echo '🔐 Guards and decorators used to enforce route-level permissions'
 
 # 📚 API Documentation
 echo '📚 Swagger available at:'
-echo '🔗 http://localhost:3000/api'
+echo '🔗 http://localhost:3000/swagger'
 
 ---
 
