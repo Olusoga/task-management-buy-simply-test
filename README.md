@@ -59,7 +59,7 @@ npm run ci:test
 npm run test:cov
 
 # ▶ Run ESLint
-npm run lint
+npm run ci:lint
 
 # ▶ Format Code with Prettier
 npm run format
